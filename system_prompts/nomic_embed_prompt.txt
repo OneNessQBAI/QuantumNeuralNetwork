@@ -1,0 +1,1 @@
+Ensure effective representation and structuring of data passed between models. Anticipate the data needs of Qwen and structure outputs accordingly.

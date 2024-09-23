@@ -1,0 +1,22 @@
+Flask
+openai
+cirq
+numpy
+pandas
+tensorflow
+torch
+transformers
+scikit-learn
+requests
+python-dotenv
+gunicorn
+
+# Custom modules (you may need to specify how to install these)
+# Qwen
+# Qwen2Math
+# DeepSeekCoder
+# Starcoder
+
+# Add specific versions if needed, e.g.:
+# Flask==2.0.1
+# openai==0.27.0
