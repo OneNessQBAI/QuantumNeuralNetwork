@@ -23,7 +23,7 @@
 
     <main>
         <div id="api-key-container">
-            <input type="password" id="api-key-input" placeholder="Enter your OpenAI API key">
+            <input type="password" id="api-key-input" placeholder="Enter your API key">
             <button onclick="connectAPI()">Connect</button>
         </div>
 
@@ -32,9 +32,20 @@
             <div id="chat-input-area">
                 <input type="text" id="user-input" placeholder="Type your message here...">
                 <button onclick="sendMessage()">Send</button>
+                <button id="test-execution-button">Test Execution</button>
             </div>
         </div>
 
+        <div id="ide">
+            <h2>Code Interpreter</h2>
+            <textarea id="code-input" placeholder="Write your Python code here..."></textarea><br>
+            <button id="execute-button">Execute Code</button>
+            <div id="output">
+                <h2>Output</h2>
+                <pre id="code-output"></pre>
+            </div>
+        </div>
+        
         <div id="video-section">
             <h2>Welcome To A New Form Of Intelligence - Enter OpenAI API Key to Load the QNN</h2>
             <video width="560" height="315" controls>
@@ -48,14 +59,14 @@
                 <p><strong>Question:</strong> What combination of existing immunotherapy drugs could be optimized with quantum-enhanced algorithms to increase efficacy in treating advanced melanoma, while reducing side effects related to immune overactivation?</p>
                 
                 <p><strong>QNN's Answer:</strong> QNN delivered a highly detailed and actionable response, outlining how quantum-enhanced algorithms could optimize combinations of existing immunotherapy drugs such as checkpoint inhibitors or CAR-T cell therapies. The QNN highlighted an iterative approach to improving the efficacy of treatment by simulating multiple drug combinations in parallel, while factoring in patient responses and minimizing immune overactivation. The system focused on efficiency improvements using quantum optimizations like reduced time complexity and enhanced parallelism, ensuring both treatment efficacy and reduced side effects.</p>
-                
+
                 <p><strong>Analysis:</strong> QNN demonstrated its real-time problem-solving capability by offering a comprehensive solution rather than just informative content. Unlike traditional AI models, which can only analyze historical data, QNN simulated various treatment pathways using quantum processing power and suggested immediate optimizations for drug combinations. This is something classical AI models would struggle with, as they lack the capability to dynamically simulate multiple drug scenarios in parallel. The impact of this response is significant, as it opens doors for faster drug optimization in critical medical treatments.</p>
                 
                 <h4>Question 2: Quantum Computing</h4>
                 <p><strong>Question:</strong> How can Grover's algorithm be optimized with superposition states to speed up solving large-scale unstructured database searches in cybersecurity encryption decryption scenarios, such as factoring large prime numbers for RSA decryption?</p>
                 
                 <p><strong>QNN's Answer:</strong> QNN provided a structured, in-depth explanation of how Grover's algorithm can be further optimized using superposition states to improve speed and efficiency in solving unstructured database searches, particularly in the realm of cybersecurity and cryptography. The response detailed the quantum advantages of Grover's algorithm, including reduced time complexity in breaking down RSA encryption through large prime number factorization. QNN also emphasized the role of quantum parallelism and suggested that quantum-enhanced algorithms can drastically reduce decryption time compared to classical methods.</p>
-                
+
                 <p><strong>Analysis:</strong> Compared to classical AI, which relies on traditional sequential processing methods for such complex cryptographic problems, QNN leveraged quantum principles like superposition and Grover's algorithm to offer exponentially faster solutions. Classical AI might take years or even longer to factor large prime numbers essential for RSA decryption, but QNN proposed an efficient path forward by leveraging the power of quantum computation. This shows how QNN can crush traditional AI in fields like cybersecurity, where time and efficiency are paramount.</p>
                 
                 <h4>Question 3: Energy</h4>

@@ -1,4 +1,4 @@
-Flask
+flask
 openai
 cirq
 numpy
@@ -10,13 +10,14 @@ scikit-learn
 requests
 python-dotenv
 gunicorn
-
+e2b_code_interpreter
+requests 
+e2b
 # Custom modules (you may need to specify how to install these)
 # Qwen
 # Qwen2Math
-# DeepSeekCoder
 # Starcoder
 
 # Add specific versions if needed, e.g.:
 # Flask==2.0.1
-# openai==0.27.0
+# openai==0.28

@@ -48,9 +48,8 @@ async function sendMessage() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-API-KEY': apiKey,
                 },
-                body: JSON.stringify({ message: message }),
+                body: JSON.stringify({ message: message, api_key: apiKey }),
             });
 
             if (!response.ok) {
@@ -60,7 +59,20 @@ async function sendMessage() {
             const data = await response.json();
 
             chatMessages.removeChild(chatMessages.lastElementChild);
-            chatMessages.innerHTML += `<div class="ai-response"><h3>QNN:</h3>${formatAIResponse(data.response)}</div>`;
+            
+            if (data.response.includes('Generated and Optimized Code:')) {
+                const codeResponse = parseCodeResponse(data.response);
+                chatMessages.innerHTML += `
+                    <div class="ai-response">
+                        <h3>QNN:</h3>
+                        <h4>Generated and Optimized Code:</h4>
+                        <pre><code>${codeResponse.code}</code></pre>
+                        <h4>Execution Output:</h4>
+                        <pre>${codeResponse.output}</pre>
+                    </div>`;
+            } else {
+                chatMessages.innerHTML += `<div class="ai-response"><h3>QNN:</h3>${formatAIResponse(data.response)}</div>`;
+            }
         } catch (error) {
             console.error('Error:', error);
             chatMessages.innerHTML += `<p><strong>Error:</strong> ${error.message}</p>`;
@@ -68,6 +80,16 @@ async function sendMessage() {
 
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
+}
+
+function parseCodeResponse(response) {
+    const codeMatch = response.match(/```python\n([\s\S]*?)```/);
+    const outputMatch = response.match(/Execution Output:\n([\s\S]*)/);
+    
+    return {
+        code: codeMatch ? codeMatch[1] : 'No code found',
+        output: outputMatch ? outputMatch[1] : 'No output found'
+    };
 }
 
 document.getElementById('user-input').addEventListener('keypress', function(event) {
@@ -102,5 +124,35 @@ function formatAIResponse(response) {
     return formattedParagraphs.join('');
 }
 
-// Don't initialize chat on window load, wait for API key connection
-// window.onload = initChat;
+// IDE Execution Code
+document.getElementById('execute-button').addEventListener('click', () => {
+    const code = document.getElementById('code-input').value;
+
+    fetch('/execute_code', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ code: code, api_key: apiKey }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        let output = '';
+
+        if (data.results) {
+            output += `Results:\n${data.results}\n\n`;
+        }
+        if (data.logs) {
+            output += `Stdout:\n${data.logs.stdout}\n\n`;
+            output += `Stderr:\n${data.logs.stderr}\n\n`;
+        }
+        if (data.error) {
+            output += `Error:\n${data.error}\n\n`;
+        }
+        document.getElementById('code-output').innerText = output;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while executing the code.');
+    });
+});
