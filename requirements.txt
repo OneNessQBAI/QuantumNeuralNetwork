@@ -1,23 +1,19 @@
-flask
-openai
-cirq
-numpy
-pandas
-tensorflow
-torch
-transformers
-scikit-learn
-requests
-python-dotenv
-gunicorn
-e2b_code_interpreter
-requests 
-e2b
+flask==2.3.3
+openai==1.3.5
+cirq==1.2.0
+numpy==1.26.2
+pandas==2.1.3
+tensorflow==2.14.0
+torch==2.1.1
+transformers==4.35.2
+scikit-learn==1.3.2
+requests==2.31.0
+python-dotenv==1.0.0
+gunicorn==21.2.0
+e2b_code_interpreter==0.1.1
+e2b==0.12.2
+
 # Custom modules (you may need to specify how to install these)
 # Qwen
 # Qwen2Math
 # Starcoder
-
-# Add specific versions if needed, e.g.:
-# Flask==2.0.1
-# openai==0.28
