@@ -11,7 +11,9 @@ requests==2.31.0
 python-dotenv==1.0.0
 gunicorn==21.2.0
 e2b_code_interpreter
-e2b==0.12.2
+e2b
+
+
 
 # Custom modules (you may need to specify how to install these)
 # Qwen
